@@ -1,0 +1,15 @@
+#root {
+  margin: 0 auto;
+  padding: 25px;
+  text-align: center;
+  border: var(--dark) 15px solid;
+  border-radius: 25px;
+}
+
+
+@media (min-width: 640px) {
+  
+}
+@media (min-width: 1080px) {
+  
+}
