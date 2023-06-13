@@ -1,4 +1,8 @@
 #root {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   margin: 0 auto;
   padding: 25px;
   text-align: center;
@@ -7,9 +11,34 @@
 }
 
 
-@media (min-width: 640px) {
+@media (orientation: portrait) {
+  @media (min-width: 0px) {  
+    #root {
+      height: 90%;
+      width: 80%;
+    }
+  }
+  @media (min-width: 640px) {
   
+  }
+  @media (min-width: 1080px) {
+  
+  }
+
 }
-@media (min-width: 1080px) {
+
+@media (orientation: landscape) {
+  @media (min-width: 0px) {  
+    #root {
+      height: 80%;
+      width: 90%;
+    }
+  }
+  @media (min-width: 640px) {
   
+  }
+  @media (min-width: 1080px) {
+  
+  }
+
 }
