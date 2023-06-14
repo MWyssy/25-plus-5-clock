@@ -1,6 +1,21 @@
+.control-button:active {
+    background-color: rgb(223, 223, 223);
+}
+
 @media (orientation: portrait) {
     @media (min-width: 0px) {  
-    
+        #controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5%;
+            justify-items: center;
+        }
+        .control-button {
+            font-size: 2rem;
+            width: 80%;
+            border: var(--dark) 3px solid;
+            border-radius: 15px;
+        }
     }
     @media (min-width: 640px) {
     
@@ -13,7 +28,19 @@
 
 @media (orientation: landscape) {
     @media (min-width: 0px) {  
-    
+        #controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5%;
+            justify-items: center;
+            margin: 2.5% 0 0 50%;
+        }
+        .control-button {
+            font-size: 2rem;
+            width: 80%;
+            border: var(--dark) 3px solid;
+            border-radius: 15px;
+        }
     }
     @media (min-width: 640px) {
     

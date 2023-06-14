@@ -1,6 +1,22 @@
 @media (orientation: portrait) {
     @media (min-width: 0px) {  
-    
+        #session {
+            display: grid;
+            grid-template-rows: 10% 90%;
+            margin-bottom: 10%;
+            border: var(--dark) 10px solid;
+            border-radius: 15px;
+            height: 25%;
+        }
+        #timer-label {
+            margin: 0 0 -20% 0;
+            border-bottom: var(--dark) 5px solid;
+            font-size: 4rem;
+        }
+        #time-left {
+            margin-top: 20%;
+            font-size: 6rem;
+        }
     }
     @media (min-width: 640px) {
     
@@ -13,7 +29,24 @@
 
 @media (orientation: landscape) {
     @media (min-width: 0px) {  
-    
+        #session {
+            display: grid;
+            grid-template-rows: 10% 90%;
+            margin: -40vh 0 0 50%;
+            border: var(--dark) 10px solid;
+            border-radius: 15px;
+            height: 50%;
+            width: 50%;
+        }
+        #timer-label {
+            margin: 0 0 -15% 0;
+            border-bottom: var(--dark) 5px solid;
+            font-size: 3.5rem;
+        }
+        #time-left {
+            margin-top: 15%;
+            font-size: 5rem;
+        }
     }
     @media (min-width: 640px) {
     

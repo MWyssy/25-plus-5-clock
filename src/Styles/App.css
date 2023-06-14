@@ -8,6 +8,9 @@
   text-align: center;
   border: var(--dark) 15px solid;
   border-radius: 25px;
+  font-family: 'Teko', sans-serif;
+  font-weight: regular;
+  color: var(--dark);
 }
 
 

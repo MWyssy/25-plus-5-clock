@@ -10,7 +10,7 @@ function Settings() {
                 <h2 id='break-label'>Break Length</h2>
                 <button 
                     type='button' 
-                    id='break-decrement' 
+                    id='break-increment' 
                     className='settings-button'>
                         <FontAwesomeIcon icon={faSquareCaretUp} />
                 </button>
@@ -23,14 +23,14 @@ function Settings() {
                 </button>
             </section>
             <section id='set-session'>
-                <h2 id='session-label'>Break Length</h2>
+                <h2 id='session-label'>Session Length</h2>
                 <button 
                     type='button' 
-                    id='session-decrement' 
+                    id='session-increment' 
                     className='settings-button'>
                         <FontAwesomeIcon icon={faSquareCaretUp} />
                 </button>
-                <h3 id='session-length'>5</h3>
+                <h3 id='session-length'>25</h3>
                 <button 
                     type='button' 
                     id='session-decrement' 

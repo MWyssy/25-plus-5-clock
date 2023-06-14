@@ -6,11 +6,11 @@ function Controls() {
 
     return (
         <section id='controls'>
-            <button type='button' id='start_stop'>
+            <button type='button' id='start_stop' className='control-button'>
                 <FontAwesomeIcon icon={faPlay} />
                 <FontAwesomeIcon icon={faPause} />
             </button>
-            <button type='button' id='reset'>
+            <button type='button' id='reset' className='control-button'>
                 <FontAwesomeIcon icon={faArrowsRotate} />
             </button>
         </section>
