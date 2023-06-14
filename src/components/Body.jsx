@@ -10,23 +10,9 @@ function Body() {
     const [timerType, setTimerType] = useState('Session')
     const [play, setPlay] = useState(false)
     const [reset, setReset] = useState(false)
-    const [seconds, setSeconds] = useState(0)
     const [sessionLength, setSessionLength] = useState(25)
     const [breakLength, setBreakLength] = useState(5)
-    const beep = document.getElementById('beep')
 
-    if (reset) {
-        setSessionTime(25)
-        setBreakTime(5)
-        setSessionLength(25)
-        setBreakLength(5)
-        setTimerType('Session')
-        setPlay(false)
-        setReset(false)
-        setSeconds(0)
-        beep.load()
-        document.getElementById("time-left").style.color = "var(--dark)"
-    }
 
     return (
         <>
@@ -50,9 +36,11 @@ function Body() {
                 timerType={timerType}
                 setTimerType={setTimerType}
                 play={play}
-                seconds={seconds}
-                setSeconds={setSeconds}
-                beep={beep}
+                reset={reset}
+                setSessionLength={setSessionLength}
+                setBreakLength={setBreakLength}
+                setPlay={setPlay}
+                setReset={setReset}
             />
             <Controls
                 play={play} 
