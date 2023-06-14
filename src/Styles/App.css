@@ -21,13 +21,6 @@
       width: 80%;
     }
   }
-  @media (min-width: 640px) {
-  
-  }
-  @media (min-width: 1080px) {
-  
-  }
-
 }
 
 @media (orientation: landscape) {
@@ -37,11 +30,10 @@
       width: 90%;
     }
   }
-  @media (min-width: 640px) {
-  
-  }
-  @media (min-width: 1080px) {
-  
+  @media (min-width: 1900px) {
+    #root {
+      border: var(--dark) 25px solid;
+    }
   }
 
 }

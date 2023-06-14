@@ -33,20 +33,41 @@
             font-size: 2.25rem;
             margin: -1%;
         }
+        @media (max-height: 760px) {
+            #break-label, #session-label {
+                font-size: 1.75rem;
+            }
+            .settings-button {
+                font-size: 1rem;
+            }
+        }
     }
     @media (min-width: 640px) {
-    
+        #break-label, #session-label {
+            font-size: 3.25rem;
+        }
+        #set-break {
+            margin-top: -15%;
+        }
+        .settings-button {
+            width: 40%;
+            font-size: 2rem;
+        }
+        
+        #break-length, #session-length {
+            font-size: 3.25rem;
+            margin: -1%;
+        }
+        #set-session {
+            margin-bottom: 5%;
+        }
     }
-    @media (min-width: 1080px) {
-    
-    }
-
 }
 
 @media (orientation: landscape) {
     @media (min-width: 0px) {  
         #set-break, #set-session {
-            margin-top: -5vh;
+            margin-top: -22.5vh;
             width: 40%;
             height: 20%;
             display: grid;
@@ -87,11 +108,45 @@
             grid-area: down;
         }
     }
-    @media (min-width: 640px) {
-    
+    @media (min-width: 1000px) {
+        #set-break, #set-session {
+            margin-top: -12.5vh;
+        }
+
+        #break-label, #session-label {
+            font-size: 3.5rem;
+        }
+        
+        #set-session {
+            margin-top: 7.5%;
+        }
+        .settings-button {
+            font-size: 1.75rem;
+            height: 55%;
+        }
+        
+        #break-length, #session-length {
+            font-size: 3.5rem;
+
+        }
+
     }
-    @media (min-width: 1080px) {
-    
+    @media (min-width: 1900px) {
+        #break-label, #session-label {
+            font-size: 5.5rem;
+        }
+        
+        #set-session {
+            margin-top: 7.5%;
+        }
+        .settings-button {
+            font-size: 2.75rem;
+            border: var(--dark) 7.5px solid;
+        }
+        
+        #break-length, #session-length {
+            font-size: 5.5rem;
+        }
     }
 
 }

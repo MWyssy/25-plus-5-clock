@@ -17,12 +17,6 @@
             border-radius: 15px;
         }
     }
-    @media (min-width: 640px) {
-    
-    }
-    @media (min-width: 1080px) {
-    
-    }
 
 }
 
@@ -42,11 +36,16 @@
             border-radius: 15px;
         }
     }
-    @media (min-width: 640px) {
-    
+    @media (min-width: 1000px) {
+        #controls {
+            margin: 2.5% 0 0 47.5%
+        }
     }
-    @media (min-width: 1080px) {
-    
+    @media (min-width: 1900px) {
+        .control-button {
+            font-size: 4rem;
+            border: var(--dark) 10px solid;
+        }
     }
 
 }
