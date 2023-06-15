@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import '../Styles/Session.css'
 import bell from '../assets/Bell.wav'
 
@@ -18,17 +18,14 @@ function Session({
     setPlay,
     setReset
 }) {
-    const [switchSession, setSwitchSession] = useState(false)
     const [seconds, setSeconds] = useState(0)
-    const [milliseconds, setMilliseconds] = useState(0)
-    const beep = document.getElementById('beep')
+    const beepRef = useRef(null)
 
     useEffect(() => {
         if (reset) {
             setSeconds(0)
-            setMilliseconds(100)
             setTimerType('Session') 
-            beep.load()
+            beepRef.current.load()
             document.getElementById("time-left").style.color = "var(--dark)"
             setSessionLength(25)
             setBreakLength(5)
@@ -37,90 +34,47 @@ function Session({
             setBreakTime(5)
             setReset(false)
         }
-    }, [
-        reset, 
-        setBreakLength, 
-        setBreakTime, 
-        setPlay, 
-        setReset, 
-        setSeconds, 
-        setSessionLength, 
-        setSessionTime, 
-        setTimerType 
-    ])
+    }, [reset])
 
-
-        if (play) {
-            if (!switchSession) {
-                if (sessionTime < 1 || breakTime < 1) {
-                    document.getElementById("time-left").style.color = "red"
-                } 
-                timer()
-            } else {
-                if (timerType === "Session") {
-                    beep.play()
-                    document.getElementById("time-left").style.color = "var(--dark)"
-                    setTimerType('Break')
-                    setSeconds(0)
-                    setBreakTime(breakLength)
-                    setSwitchSession(false)
-                    timer()
-                } else {
-                    beep.play()
-                    document.getElementById("time-left").style.color = "var(--dark)"
-                    setTimerType('Session')
-                    setSeconds(0)
-                    setSessionTime(sessionLength)
-                    setSwitchSession(false)
-                    timer()
-                }   
-            }
-        }
-    
-
+       
     function pad(num) {
         return num < 10 ? "0" + num : num;
     }
     
-    function timer() {
-        if (timerType === "Session") {
-            const timerSesh = setInterval(() => {
-                if (!milliseconds) {
-                    clearInterval(timerSesh)
-                    setMilliseconds(99)
-                    setSeconds(seconds - 1)
-                } else if (seconds < 0) {
-                    clearInterval(timerSesh)
-                    setSeconds(59)
-                    setSessionTime(sessionTime - 1)
-                } else {
-                    clearInterval(timerSesh)
-                    setMilliseconds(milliseconds - 1)
-                }
-                if (sessionTime === 0 && seconds < 1) {
-                    setSwitchSession(true)
-                }
-            }, 10)        
-        } else {
-            const timerBreak = setInterval(() => {
-                if (milliseconds === 0) {
-                    clearInterval(timerBreak)
-                    setMilliseconds(99)
-                    setSeconds(seconds - 1)
-                } else if (seconds < 0) {
-                    clearInterval(timerBreak)
-                    setSeconds(59)
-                    setBreakTime(breakTime - 1)
-                } else {
-                    clearInterval(timerBreak)
-                    setMilliseconds(milliseconds - 1)
-                }
-                if (breakTime === 0 && seconds < 1) {
-                    setSwitchSession(true)
-                }
-            }, 10) 
-        }
-    }
+    useEffect(() => {
+        if (play) {
+            const intervalId = setInterval(() => {
+                    if (seconds <= 0) {
+                        if (sessionTime <= 0 || breakTime <= 0) {
+                            beepRef.current.play()
+                            if (timerType === 'Session') {
+                                clearInterval(intervalId)
+                                setTimerType('Break')
+                                setSessionTime(sessionLength)
+                                setBreakTime(breakLength)
+                            } else {
+                                clearInterval(intervalId)
+                                setTimerType('Session')
+                                setSessionTime(sessionLength)
+                                setBreakTime(breakLength)
+                            }
+                        } else {
+                            setSeconds(59)
+                            if (timerType === 'Session') {
+                                clearInterval(intervalId)
+                                setSessionTime(sessionTime - 1)
+                            } else {
+                                clearInterval(intervalId)
+                                setBreakTime(breakTime - 1)
+                            }
+                        }
+                    } else {
+                        clearInterval(intervalId)
+                        setSeconds(seconds - 1)
+                    }
+            }, 1000)
+        } 
+    }, [play, seconds, timerType, reset])
 
     return (
         <section id='session'>
@@ -130,7 +84,7 @@ function Session({
                     ? `${pad(sessionTime)}:${pad(seconds)}` 
                     : `${pad(breakTime)}:${pad(seconds)}`}
             </h2>
-            <audio src={bell} id='beep'></audio>
+            <audio src={bell} ref={beepRef} id='beep'></audio>
         </section>
     )
 }
