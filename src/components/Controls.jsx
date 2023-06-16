@@ -8,11 +8,7 @@ function Controls({ play, setPlay, setReset }) {
         const button = event.target.id
 
         if (button === "start_stop") {
-            if (play) {
-                setPlay(false)
-            } else  {
-                setPlay(true)
-            }
+            setPlay((prevState) => !prevState)
         } else {
             setReset(true)
         }
