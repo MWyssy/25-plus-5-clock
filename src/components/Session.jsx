@@ -13,30 +13,26 @@ function Session({
     setTimerType, 
     play, 
     reset,
-    setSessionLength,
-    setBreakLength,
-    setPlay,
-    setReset
+    onResetComplete,
+    beepRef
 }) {
     const [seconds, setSeconds] = useState(0)
-    const beepRef = useRef(null)
     const intervalRef = useRef(null)
 
+    if (reset) {
+        beepRef.current.pause()
+        beepRef.current.currentTime = 0
+    }
+
     useEffect(() => {
-        if (reset) {
-            setSeconds(0)
-            setTimerType('Session') 
-            setSessionLength(25)
-            setBreakLength(5)
-            setPlay(false)
-            setSessionTime(25)
-            setBreakTime(5)
-            setReset(false)
-            beepRef.current.pause()
-            beepRef.current.currentTime = 0
-            beepRef.current.load()
-        }
-    }, [reset])
+    if (reset) {
+        beepRef.current.pause()
+        beepRef.current.currentTime = 0
+        beepRef.current.load()
+        setSeconds(0)
+        onResetComplete()
+    }
+    }, [reset, onResetComplete])
        
     function pad(num) {
         return num < 10 ? "0" + num : num;

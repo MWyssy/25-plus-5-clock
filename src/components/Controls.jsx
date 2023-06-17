@@ -2,7 +2,7 @@ import '../Styles/Controls.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faArrowsRotate, faPause } from '@fortawesome/free-solid-svg-icons'
 
-function Controls({ play, setPlay, setReset }) {
+function Controls({ handleReset, setPlay, setReset }) {
 
     function handleClick(event) {
         const button = event.target.id
@@ -10,7 +10,7 @@ function Controls({ play, setPlay, setReset }) {
         if (button === "start_stop") {
             setPlay((prevState) => !prevState)
         } else {
-            setReset(true)
+            handleReset()
         }
     }
 

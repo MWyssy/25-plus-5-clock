@@ -6,6 +6,7 @@
 .settings-button {
     border: var(--dark) 3px solid;
     border-radius: 15px;
+    color: rgb(17, 20, 40)
 }
 
 .settings-button:active {
